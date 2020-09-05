@@ -1,7 +1,11 @@
 .PC-__ {
+  position: relative;
+  margin: 0 auto;
   width: 1256px;
   height: 772px;
   background-color: #ffffff;
+  padding: 30px 60px;
+  box-sizing: border-box;
 }
 
 .bt_checkbox_checked {
@@ -21,30 +25,6 @@
   line-height: normal;
   letter-spacing: normal;
   color: #424242;
-}
-
-.card_img {
-  width: 268px;
-  height: 268px;
-  border-radius: 10px;
-}
-
-.user_name {
-  height: 19px;
-  font-family: AppleSDGothicNeo;
-  font-size: 15px;
-  font-weight: bold;
-  font-stretch: normal;
-  font-style: normal;
-  line-height: 1.27;
-  letter-spacing: normal;
-  color: rgba(0, 0, 0, 0.74);
-}
-
-.ic_avatar_cat {
-  width: 36px;
-  height: 36px;
-  object-fit: contain;
 }
 
 .blue {
