@@ -1,4 +1,4 @@
-import { set, observable } from "mobx";
+import { set, observable, action } from "mobx";
 export interface CardType {
   id: number;
   image_url: string;
@@ -10,7 +10,21 @@ export interface CardType {
 export default class CardModel implements CardType {
   constructor(card) {
     set(this, card);
+    if (localStorage.getItem(card.id)) {
+      this.isScrap = true;
+    }
   }
+  @action
+  toggleIsScrap = () => {
+    const name = `${this.id}`;
+    if (this.isScrap) {
+      localStorage.removeItem(name);
+    } else {
+      localStorage.setItem(name, name);
+    }
+    this.isScrap = !this.isScrap;
+  };
+
   @observable
   id = 0;
   @observable

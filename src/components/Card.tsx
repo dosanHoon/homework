@@ -1,6 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import { CardType } from "../model/CardModel";
+import { observer } from "mobx-react";
 
 const CardItem = styled.article`
   width: 268px;
@@ -51,15 +52,13 @@ const ScrapImg = styled.img`
 `;
 
 const Card: React.FC<{ card: CardType }> = ({ card, index }) => {
-  const { id, image_url, nickname, profile_image_url, isScrap } = card;
-
-  const scrap = () => {
-    if (isScrap) {
-      localStorage.removeItem(id);
-    } else {
-      localStorage.setItem(id, id);
-    }
-  };
+  const {
+    image_url,
+    nickname,
+    profile_image_url,
+    isScrap,
+    toggleIsScrap,
+  } = card;
 
   return (
     <CardItem index={index}>
@@ -74,8 +73,8 @@ const Card: React.FC<{ card: CardType }> = ({ card, index }) => {
       <div className="card_img">
         <CardImg src={image_url} alt="card_img" />
         <ScrapImg
-          onClick={scrap}
-          src={`${isScrap ? "img/on-img.svg" : "img/blue.svg"}`}
+          onClick={toggleIsScrap}
+          src={`${isScrap ? "img/blue.svg" : "img/on-img.svg"}`}
           className="on-img"
           alt="on"
         />
@@ -84,4 +83,4 @@ const Card: React.FC<{ card: CardType }> = ({ card, index }) => {
   );
 };
 
-export default Card;
+export default observer(Card);
