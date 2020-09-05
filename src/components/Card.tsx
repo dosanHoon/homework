@@ -1,5 +1,6 @@
 import React from "react";
 import styled from "styled-components";
+import { CardType } from "../model/CardModel";
 
 const CardItem = styled.article`
   width: 268px;
@@ -48,14 +49,6 @@ const ScrapImg = styled.img`
   width: 32px;
   height: 32px;
 `;
-
-export interface CardType {
-  id: number;
-  image_url: string;
-  nickname: string;
-  profile_image_url: string;
-  isScrap: boolean;
-}
 
 const Card: React.FC<{ card: CardType }> = ({ card, index }) => {
   const { id, image_url, nickname, profile_image_url, isScrap } = card;
