@@ -1,3 +1,14 @@
+html,
+body {
+  font-family: AppleSDGothicNeo;
+  font-size: 15px;
+  font-weight: bold;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: 1.27;
+  letter-spacing: normal;
+  color: rgba(0, 0, 0, 0.74);
+}
 .PC-__ {
   position: relative;
   margin: 0 auto;
@@ -6,23 +17,4 @@
   background-color: #ffffff;
   padding: 30px 60px;
   box-sizing: border-box;
-}
-
-.bt_checkbox_checked {
-  width: 24px;
-  height: 24px;
-  object-fit: contain;
-}
-
-.scrap_tit {
-  width: 244px;
-  height: 19px;
-  font-family: AppleSDGothicNeo;
-  font-size: 15px;
-  font-weight: normal;
-  font-stretch: normal;
-  font-style: normal;
-  line-height: normal;
-  letter-spacing: normal;
-  color: #424242;
 }

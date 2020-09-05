@@ -10,6 +10,25 @@ const CardWrapper = styled.section`
   margin: 0 auto;
 `;
 
+const ScrapWrap = styled.p`
+  margin-bottom: 32px;
+`;
+
+const ScrapText = styled.span`
+  color: #424242;
+  margin-left: 10px;
+  vertical-align: middle;
+  font-weight: normal;
+  cursor: pointer;
+`;
+
+const ScrapChecker = styled.img`
+  width: 24px;
+  height: 24px;
+  vertical-align: middle;
+  cursor: pointer;
+`;
+
 function getScrollTop() {
   return window.pageYOffset !== undefined
     ? window.pageYOffset
@@ -73,21 +92,18 @@ const CardList: React.FC = () => {
   }, [filteredList]);
 
   return (
-    <div>
-      <CardWrapper>
-        <p onClick={toggleIsShow}>
-          <img
-            src={`img/${
-              isShowOnlyScrap ? "bt-checkbox-checked.svg" : "white.svg"
-            }`}
-            className="bt_checkbox_checked"
-            alt="checkbox"
-          />
-          <span className="scrap_tit">스크랩한 것만 보기</span>
-        </p>
-        {_renderCardList}
-      </CardWrapper>
-    </div>
+    <CardWrapper>
+      <ScrapWrap onClick={toggleIsShow}>
+        <ScrapChecker
+          src={`img/${
+            isShowOnlyScrap ? "bt-checkbox-checked.svg" : "white.svg"
+          }`}
+          alt="checkbox"
+        />
+        <ScrapText>스크랩한 것만 보기</ScrapText>
+      </ScrapWrap>
+      {_renderCardList}
+    </CardWrapper>
   );
 };
 

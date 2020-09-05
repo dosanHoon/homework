@@ -6,6 +6,7 @@ import { observer } from "mobx-react";
 const CardItem = styled.article`
   width: 268px;
   margin-right: ${(props) => (props.index % 4 ? "20px" : "0")};
+  margin-bottom: 30px;
   display: inline-block;
   position: relative;
 `;
@@ -21,14 +22,6 @@ const Avatar = styled.img`
 const UserName = styled.span`
   padding-left: 10px;
   height: 19px;
-  font-family: AppleSDGothicNeo;
-  font-size: 15px;
-  font-weight: bold;
-  font-stretch: normal;
-  font-style: normal;
-  line-height: 1.27;
-  letter-spacing: normal;
-  color: rgba(0, 0, 0, 0.74);
   display: inline-block;
   vertical-align: middle;
 `;
@@ -43,12 +36,22 @@ const UserInfo = styled.div`
   margin-bottom: 10px;
 `;
 
+const ScrapBtnWrap = styled.a`
+  position: relative;
+  display: block;
+  transition: all 0.5s ease-in-out;
+  &:hover {
+    transform: translate3d(2px, 2px, -17px);
+    opacity: 0.6;
+  }
+`;
 const ScrapImg = styled.img`
   position: absolute;
   right: 10px;
   bottom: 10px;
   width: 32px;
   height: 32px;
+  cursor: pointer;
 `;
 
 const Card: React.FC<{ card: CardType }> = ({ card, index }) => {
@@ -72,12 +75,14 @@ const Card: React.FC<{ card: CardType }> = ({ card, index }) => {
       </UserInfo>
       <div className="card_img">
         <CardImg src={image_url} alt="card_img" />
-        <ScrapImg
-          onClick={toggleIsScrap}
-          src={`${isScrap ? "img/blue.svg" : "img/on-img.svg"}`}
-          className="on-img"
-          alt="on"
-        />
+        <ScrapBtnWrap>
+          <ScrapImg
+            onClick={toggleIsScrap}
+            src={`${isScrap ? "img/blue.svg" : "img/on-img.svg"}`}
+            className="on-img"
+            alt="on"
+          />
+        </ScrapBtnWrap>
       </div>
     </CardItem>
   );
