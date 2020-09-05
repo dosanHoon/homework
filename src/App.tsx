@@ -24,14 +24,6 @@ function App() {
 
   return (
     <main className="PC-__">
-      <p>
-        <img
-          src="img/bt-checkbox-checked.svg"
-          className="bt_checkbox_checked"
-          alt="checkbox"
-        />
-        <span className="scrap_tit">스크랩한 것만 보기</span>
-      </p>
       <CardList list={list} />
     </main>
   );

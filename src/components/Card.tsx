@@ -5,6 +5,7 @@ const CardItem = styled.article`
   width: 268px;
   margin-right: ${(props) => (props.index % 4 ? "20px" : "0")};
   display: inline-block;
+  position: relative;
 `;
 
 const Avatar = styled.img`
@@ -40,6 +41,14 @@ const UserInfo = styled.div`
   margin-bottom: 10px;
 `;
 
+const ScrapImg = styled.img`
+  position: absolute;
+  right: 10px;
+  bottom: 10px;
+  width: 32px;
+  height: 32px;
+`;
+
 export interface CardType {
   id: number;
   image_url: string;
@@ -49,7 +58,16 @@ export interface CardType {
 }
 
 const Card: React.FC<{ card: CardType }> = ({ card, index }) => {
-  const { image_url, nickname, profile_image_url, isScrap } = card;
+  const { id, image_url, nickname, profile_image_url, isScrap } = card;
+
+  const scrap = () => {
+    if (isScrap) {
+      localStorage.removeItem(id);
+    } else {
+      localStorage.setItem(id, id);
+    }
+  };
+
   return (
     <CardItem index={index}>
       <UserInfo>
@@ -62,11 +80,12 @@ const Card: React.FC<{ card: CardType }> = ({ card, index }) => {
       </UserInfo>
       <div className="card_img">
         <CardImg src={image_url} alt="card_img" />
-        {isScrap ? (
-          <img src="img/on-img.svg" className="on-img" alt="on" />
-        ) : (
-          <img src="img/blue.svg" className="blue" alt="onBlue" />
-        )}
+        <ScrapImg
+          onClick={scrap}
+          src={`${isScrap ? "img/on-img.svg" : "img/blue.svg"}`}
+          className="on-img"
+          alt="on"
+        />
       </div>
     </CardItem>
   );

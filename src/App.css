@@ -26,15 +26,3 @@
   letter-spacing: normal;
   color: #424242;
 }
-
-.blue {
-  width: 32px;
-  height: 32px;
-  object-fit: contain;
-}
-
-.on-img {
-  width: 32px;
-  height: 32px;
-  object-fit: contain;
-}
