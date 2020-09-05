@@ -1,38 +1,60 @@
-.App {
-  text-align: center;
+.PC-__ {
+  width: 1256px;
+  height: 772px;
+  background-color: #ffffff;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.bt_checkbox_checked {
+  width: 24px;
+  height: 24px;
+  object-fit: contain;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.scrap_tit {
+  width: 244px;
+  height: 19px;
+  font-family: AppleSDGothicNeo;
+  font-size: 15px;
+  font-weight: normal;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: normal;
+  letter-spacing: normal;
+  color: #424242;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+.card_img {
+  width: 268px;
+  height: 268px;
+  border-radius: 10px;
 }
 
-.App-link {
-  color: #61dafb;
+.user_name {
+  height: 19px;
+  font-family: AppleSDGothicNeo;
+  font-size: 15px;
+  font-weight: bold;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: 1.27;
+  letter-spacing: normal;
+  color: rgba(0, 0, 0, 0.74);
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.ic_avatar_cat {
+  width: 36px;
+  height: 36px;
+  object-fit: contain;
+}
+
+.blue {
+  width: 32px;
+  height: 32px;
+  object-fit: contain;
+}
+
+.on-img {
+  width: 32px;
+  height: 32px;
+  object-fit: contain;
 }
