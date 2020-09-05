@@ -17,6 +17,7 @@ export default class UserHomeStore {
       const API_URL = `https://s3.ap-northeast-2.amazonaws.com/bucketplace-coding-test/cards/page_${page}.json`;
       const { data } = await axios.get(API_URL);
       this.list = [...this.list, ...data.map((card) => new CardModel(card))];
+      return data.length;
     } catch (e) {
       console.log("getCardList error");
     }

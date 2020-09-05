@@ -3,7 +3,7 @@ import Card from "./Card";
 import styled from "styled-components";
 import { CardType } from "../model/CardModel";
 import { useHomeStore } from "../store/UserHomeStore";
-import { observer } from "mobx-react";
+import { observer, useLocalStore } from "mobx-react";
 
 const CardWrapper = styled.section`
   position: relative;
@@ -37,23 +37,31 @@ const CardList: React.FC = () => {
     isShowOnlyScrap,
     toggleIsShow,
   } = useHomeStore();
-  const [page, setPage] = React.useState(1);
 
-  React.useEffect(() => {
-    getCardList(page);
-  }, [page, getCardList]);
+  const state = useLocalStore(() => ({
+    page: 1,
+    isFinished: true,
+  }));
 
-  const scrollGetData = () => {
+  const scrollGetData = React.useCallback(() => {
     if (getScrollTop() < getDocumentHeight() - window.innerHeight) return;
-    setPage(page + 1);
-  };
+    ++state.page;
+  }, [state.page]);
 
   React.useEffect(() => {
-    window.addEventListener("scroll", scrollGetData);
-    return () => {
+    getCardList(state.page).then((isFinish) => {
+      state.isFinished = isFinish !== 0;
+    });
+  }, [state.page, getCardList]);
+
+  React.useEffect(() => {
+    if (state.isFinished) {
+      window.addEventListener("scroll", scrollGetData);
+    } else {
       window.removeEventListener("scroll", scrollGetData);
-    };
-  }, []);
+    }
+    return () => window.removeEventListener("scroll", scrollGetData);
+  }, [state.isFinished]);
 
   const _renderCardList = React.useMemo(() => {
     if (filteredList) {
